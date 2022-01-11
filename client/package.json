@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -19,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scss": "gulp scss"
+    "sass": "gulp watch"
   },
   "eslintConfig": {
     "extends": [

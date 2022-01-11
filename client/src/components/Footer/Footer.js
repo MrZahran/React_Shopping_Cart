@@ -1,6 +1,7 @@
 import React from "react";
-// import "../../css/";
+import "../../css/Footer/Footer.css";
+import { staticContent } from "../../static_content";
 
 export default function Footer() {
-  return <footer>All Is Well</footer>;
+  return <footer>{staticContent.footerTitle}</footer>;
 }
