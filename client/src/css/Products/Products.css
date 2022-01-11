@@ -1,0 +1,24 @@
+.products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.products-wrapper .product-item {
+  width: 20%;
+  margin: 15px;
+}
+.products-wrapper .product-item img {
+  width: 100%;
+}
+.products-wrapper .product-item .product-details {
+  display: flex;
+  justify-content: space-between;
+}
+.products-wrapper .product-item button {
+  background-color: black;
+  color: white;
+  border: 0;
+  padding: 7px 0;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+}
