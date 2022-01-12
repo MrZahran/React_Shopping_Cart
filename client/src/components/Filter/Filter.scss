@@ -1,0 +1,30 @@
+.filter-wrapper {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+
+  > div {
+    padding: 0 10px;
+  }
+
+  h2 {
+    background-color: white;
+    color: black;
+  }
+
+  .num-of-products {
+    padding: 10px;
+    border: 2px solid white;
+    margin: 23px 0;
+  }
+
+  span {
+    font-size: 22px;
+  }
+
+  select {
+    display: block;
+    width: 100%;
+    height: 35px;
+  }
+}
