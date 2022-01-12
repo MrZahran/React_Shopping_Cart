@@ -38,5 +38,13 @@
     "desc": "This Is Product 4",
     "price": 150,
     "sizes": ["S", "M"]
+  },
+  {
+    "id": "id6",
+    "title": "Product 6",
+    "imgUrl": "/images/1.jpg",
+    "desc": "This Is Product 4",
+    "price": 150,
+    "sizes": ["L", "xL"]
   }
 ]
