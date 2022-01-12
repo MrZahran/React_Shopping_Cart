@@ -30,14 +30,11 @@ function App() {
     setSort(e.target.value);
     let productsClone = [...products];
     let newProducts = productsClone.sort(function (a, b) {
-      if (order == "lowest") {
+      if (order === "lowest") {
         return a.price - b.price;
-      } else if (order == "highest") {
+      } else if (order === "highest") {
         return b.price - a.price;
-      } else if (order == "latest") {
-        // console.log(a.id < b.id ? 1 : -1);
-        console.log(a.id);
-        console.log(b.id);
+      } else if (order === "latest") {
         return a.id < b.id ? 1 : -1;
       }
     });
