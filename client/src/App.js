@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Products from "./components/Products/Products";
 import Filter from "./components/Filter/Filter";
+import Cart from "./components/Cart/Cart";
 import data from "./data.json";
 import "./index.css";
 
@@ -10,6 +11,9 @@ function App() {
   const [products, setProducts] = useState(data);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("");
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
 
   function handleFilterBySize(e) {
     setSize(e.target.value);
@@ -41,19 +45,47 @@ function App() {
     setProducts(newProducts);
   }
 
+  function addToCart(product) {
+    const cartItemsClone = [...cartItems];
+    let isProductExist = false;
+
+    cartItemsClone.forEach((p) => {
+      if (p.id === product.id) {
+        p.qty++;
+        isProductExist = true;
+      }
+    });
+
+    if (!isProductExist) {
+      cartItemsClone.push({ ...product, qty: 1 });
+    }
+    setCartItems(cartItemsClone);
+  }
+
+  function removeFromCart(product) {
+    const cartItemsClone = [...cartItems];
+    setCartItems(cartItemsClone.filter((p) => p.id !== product.id));
+  }
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <div className="App">
       <Header />
       <main>
         <div className="wrapper">
-          <Products products={products} />
+          <Products products={products} addToCart={addToCart} />
           <Filter
+            productsNum={products.length}
             size={size}
             sort={sort}
             handleFilterBySize={handleFilterBySize}
             handleFilterByOrder={handleFilterByOrder}
           />
         </div>
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
       </main>
 
       <Footer />
