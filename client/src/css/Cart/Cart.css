@@ -35,7 +35,16 @@
 .cart-wrapper .items-wrapper .cart-info .item-details > p:nth-of-type(3) {
   color: green;
 }
-.cart-wrapper .items-wrapper .cart-info button {
+.cart-wrapper .cart-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+}
+.cart-wrapper .cart-bottom .total {
+  font-size: 30px;
+}
+.cart-wrapper button {
   background-color: black;
   color: white;
   border: 0;
@@ -44,4 +53,5 @@
   border-radius: 5px;
   width: 100px;
   height: 50px;
+  cursor: pointer;
 }

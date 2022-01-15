@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/Cart/Cart.css";
+import CheckoutForm from "../CheckoutForm/Checkout";
 
 function Cart(props) {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="cart-wrapper">
       <h2>
@@ -27,6 +30,19 @@ function Cart(props) {
           </div>
         ))}
       </div>
+      {props.cartItems.length && (
+        <div className="cart-bottom">
+          <div className="total">
+            Total : $
+            {props.cartItems.reduce((acc, b) => {
+              return acc + b.price;
+            }, 0)}
+          </div>
+          <button onClick={() => setShowForm(true)}>Select Items</button>
+        </div>
+      )}
+
+      <CheckoutForm showForm={showForm} setShowForm={setShowForm} />
     </div>
   );
 }
