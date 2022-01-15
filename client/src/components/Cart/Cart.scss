@@ -40,16 +40,28 @@
           color: green;
         }
       }
-      button {
-        background-color: black;
-        color: white;
-        border: 0;
-        padding: 7px 0;
-        margin: 10px 0;
-        border-radius: 5px;
-        width: 100px;
-        height: 50px;
-      }
     }
+  }
+  .cart-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+
+    .total {
+      font-size: 30px;
+    }
+  }
+
+  button {
+    background-color: black;
+    color: white;
+    border: 0;
+    padding: 7px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
   }
 }
