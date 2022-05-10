@@ -23,7 +23,7 @@ function Products(props) {
     <div className="products-wrapper">
       {props.products && props.products.length
         ? props.products.map((product) => (
-            <div className="product-item" key={product.id}>
+            <div className="product-item" key={product._id}>
               <a href="##" onClick={() => openModal(product)}>
                 <img src={product.imgUrl} alt={product.title} />
               </a>
@@ -35,10 +35,11 @@ function Products(props) {
               <button onClick={() => props.addToCart(product)}>
                 Add to cart
               </button>
+              {/* {console.log(product._id)} */}
+              {/* {console.log(product)} */}
             </div>
           ))
         : "Loading..."}
-
       <ProductModel product={product} closeModal={closeModal} />
     </div>
   );
@@ -47,7 +48,7 @@ function Products(props) {
 export default connect(
   (state) => {
     return {
-      products: state.products.products,
+      products: state.products.filterProducts,
     };
   },
   { fetchProducts }
