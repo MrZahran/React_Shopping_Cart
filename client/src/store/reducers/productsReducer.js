@@ -3,7 +3,6 @@ import { FETCH_PRODUCTS, FILTER_SIZE, FILTER_SORT } from "../actions/types";
 export const productsReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
-      // console.log(action.data);
       return { products: action.data, filterProducts: action.data };
 
     case FILTER_SIZE:
