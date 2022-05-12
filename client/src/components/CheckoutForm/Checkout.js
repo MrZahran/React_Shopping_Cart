@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
+import { connect } from "react-redux";
 import "../../css/CheckoutForm/Checkout.css";
 
 function CheckoutForm(props) {
+  const [order, setOrder] = useState(false);
+
   const submitOrder = (e) => {
     e.preventDefault();
 
-    const order = {
+    setOrder({
       name: value.name,
       email: value.email,
-    };
+    });
   };
 
   const [value, setValue] = useState("");
@@ -37,13 +41,44 @@ function CheckoutForm(props) {
               <input onChange={handleChange} type="text" name="email" />
             </div>
             <div>
-              <button type="submit">Check out</button>
+              <button onChange={submitOrder} type="submit">
+                Check out
+              </button>
             </div>
           </form>
         </div>
       )}
+      {/* Modal */}
+      <Modal isOpen={order} onRequestClose={() => setOrder(false)}>
+        <div className="order-info">
+          <span onClick={() => setOrder(false)} className="close-icon">
+            &times;
+          </span>
+          <h2>Checkout Info</h2>
+          <div>Name:{order.name}</div>
+          <div>Email: {order.email}</div>
+          {console.log(props.cartItems)}
+          {props.cartItems.map((item) => (
+            <div>
+              <p>Product Name: {item.title}</p>
+              <p>Price: {item.price}</p>
+              <p>-----------------------</p>
+            </div>
+          ))}
+          <div className="total">
+            Total : $
+            {props.cartItems.reduce((acc, b) => {
+              return acc + b.price;
+            }, 0)}
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
 
-export default CheckoutForm;
+export default connect((state) => {
+  return {
+    cartItems: state.cart.cartItems,
+  };
+})(CheckoutForm);
