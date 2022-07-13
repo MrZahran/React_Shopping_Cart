@@ -48,7 +48,7 @@ function CheckoutForm(props) {
           </form>
         </div>
       )}
-      {/* Modal */}
+      {/* Order Modal */}
       <Modal isOpen={order} onRequestClose={() => setOrder(false)}>
         <div className="order-info">
           <span onClick={() => setOrder(false)} className="close-icon">
