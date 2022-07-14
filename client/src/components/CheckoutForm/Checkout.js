@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { connect } from "react-redux";
 import "../../css/CheckoutForm/Checkout.css";
+import { createOrder, clearOrder } from "../../store/actions/orders";
 
 function CheckoutForm(props) {
   const [order, setOrder] = useState(false);
@@ -9,10 +10,12 @@ function CheckoutForm(props) {
   const submitOrder = (e) => {
     e.preventDefault();
 
-    setOrder({
+    const order = {
       name: value.name,
       email: value.email,
-    });
+    };
+
+    props.createOrder(order);
   };
 
   const [value, setValue] = useState("");
@@ -22,6 +25,11 @@ function CheckoutForm(props) {
       ...prevstate,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const closeModal = () => {
+    props.clearOrder();
+    props.setShowForm(false);
   };
 
   return (
@@ -49,9 +57,9 @@ function CheckoutForm(props) {
         </div>
       )}
       {/* Order Modal */}
-      <Modal isOpen={order} onRequestClose={() => setOrder(false)}>
+      <Modal isOpen={props.order} onRequestClose={closeModal}>
         <div className="order-info">
-          <span onClick={() => setOrder(false)} className="close-icon">
+          <span onClick={closeModal} className="close-icon">
             &times;
           </span>
           <h2>Checkout Info</h2>
@@ -77,8 +85,12 @@ function CheckoutForm(props) {
   );
 }
 
-export default connect((state) => {
-  return {
-    cartItems: state.cart.cartItems,
-  };
-})(CheckoutForm);
+export default connect(
+  (state) => {
+    return {
+      order: state.order.order,
+      cartItems: state.cart.cartItems,
+    };
+  },
+  { createOrder, clearOrder }
+)(CheckoutForm);
