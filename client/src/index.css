@@ -16,3 +16,28 @@
 .wrapper .filter-wrapper {
   width: 30%;
 }
+
+/* Nav */
+.nav ul {
+  display: flex;
+  list-style: none;
+  font-size: 30px;
+  margin: 10px;
+  gap: 10px;
+  justify-content: center;
+}
+
+.nav ul li {
+}
+
+.nav ul li a {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
+.nav ul li a.active {
+  background-color: white;
+  color: black;
+}
