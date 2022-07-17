@@ -18,6 +18,10 @@ function CheckoutForm(props) {
     props.createOrder(order);
   };
 
+  // if (props.order) {
+  //   console.log(props.order.name);
+  // }
+
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -63,8 +67,10 @@ function CheckoutForm(props) {
             &times;
           </span>
           <h2>Checkout Info</h2>
-          <div>Name:{order.name}</div>
-          <div>Email: {order.email}</div>
+
+          {props.order && <div>Name:{props.order.name}</div>}
+          {props.order && <div>Email: {props.order.email}</div>}
+
           {console.log(props.cartItems)}
           {props.cartItems.map((item) => (
             <div>
